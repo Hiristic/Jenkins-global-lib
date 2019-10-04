@@ -1,0 +1,10 @@
+# Idea
+.idea/
+.vscode
+*.iml
+*.pyc
+.*.json
+.pytest_cache/
+__pycache__
+python/__pycache__
+python/test_data/generated*

@@ -1,0 +1,2 @@
+Checkout latest version of library repo to workspace
+Usage: getLib()
