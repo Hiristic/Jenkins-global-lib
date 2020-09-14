@@ -1,7 +1,7 @@
 def py_image
 
 timeout(time: 30, unit: 'MINUTES') {
-    node {
+    node ('slave') {
         stage('Checkout') {
             cleanWs()
             git "https://github.com/Hiristic/Jenkins-global-lib.git"

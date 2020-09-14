@@ -35,8 +35,11 @@ pipeline {
 
             //Run shell script from repo
             git "https://github.com/Hiristic/Jenkins-global-lib.git"
-            sh "./shell/usage.sh"
-        }      
+            dir('shell'){
+                sh "chmod +x usage.sh"
+                sh "./usage.sh"
+            }      
+        }
       }
     }
   }
