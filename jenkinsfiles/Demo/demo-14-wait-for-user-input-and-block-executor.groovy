@@ -5,7 +5,7 @@ pipeline {
   stages {
 
     stage('Stage 2') {
-      agent none // this does not change anything as agent can only be overwritten if the parent agent is 'none'
+      agent none 
       steps {
         timeout(time: 1, unit: 'MINUTES') {
           script {

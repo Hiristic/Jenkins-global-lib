@@ -1,0 +1,3 @@
+PyYaml
+urllib3
+pytest

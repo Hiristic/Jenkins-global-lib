@@ -20,4 +20,8 @@ node ('master') {
   echo "Find and return key: "+dogs_json.message.find{ it.key == breed}
   echo "Find key and extract value: "+dogs_json.message.find{ it.key == breed}.value
 
+  echo "Iterate over each Json object value"
+  dogs_json.message.each{
+    echo "Each value: "+it
+  }
 }

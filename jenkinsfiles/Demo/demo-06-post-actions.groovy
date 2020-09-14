@@ -15,62 +15,19 @@ pipeline {
         }
       }
       post {
-        always {
-          script {
-            echo 'stage1.always'
-          }
-        }
-        success {
-          script {
-            echo 'stage1.success'
-          }
-        }
-        changed {
-          script {
-            echo 'stage1.changed'
-          }
-        }
-        aborted {
-          script {
-            echo 'stage1.aborted'
-          }
-        }
-        failure {
-          script {
-            echo 'stage1.failure'
-          }
-        }
+        always { script { echo 'post.stage1.always' } }
+        success { script { echo 'post.stage1.success' } }
+        changed { script { echo 'post.stage1.changed' } }
+        aborted { script { echo 'post.stage1.aborted' } }
+        failure { script { echo 'post.stage1.failure' } }
       }
     }
-
   }
-
   post {
-    always {
-      script {
-        echo 'post.always'
-      }
-    }
-    success {
-      script {
-        echo 'post.success'
-      }
-    }
-    changed {
-      script {
-        echo 'post.changed'
-      }
-    }
-    aborted {
-      script {
-        echo 'post.aborted'
-      }
-    }
-    failure {
-      script {
-        echo 'post.failure'
-      }
-    }
+    always { script { echo 'post.always' } }
+    success { script { echo 'post.success' } }
+    changed { script { echo 'post.changed' } }
+    aborted { script { echo 'post.aborted' } }
+    failure { script { echo 'post.failure' } }
   }
-
 }

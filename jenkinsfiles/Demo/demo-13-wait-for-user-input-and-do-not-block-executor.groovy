@@ -1,5 +1,5 @@
 pipeline {
-  agent none // agent can only be overwritten if the initial value is 'none'
+  agent none
   stages {
 
     stage('Stage 1') {
@@ -7,6 +7,7 @@ pipeline {
       steps {
         script {
           echo 'This stage is blocking the executor because of the "agent any"'
+          input message: "Are you sure?"
         }
       }
     }

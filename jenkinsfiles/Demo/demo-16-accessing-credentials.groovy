@@ -4,7 +4,7 @@ pipeline {
   agent any
   stages {
 
-    stage('usernamePassword') {
+    stage('Username and Password') {
       steps {
         script {
           withCredentials([
@@ -15,35 +15,23 @@ pipeline {
             echo 'Credentials are accessable but not visible:'
             echo 'username = ' + username 
             echo 'password = ' + password
-
           }
         }
       }
     }
 
-//To be used when docker certificates are available
-  /*  stage('dockerCert') {
+    stage('Environment credentials') {
+      environment {server_cred = credentials('server_login')}
       steps {
         script {
-          withCredentials([
-            dockerCert(
-              credentialsId: 'production-docker-ee-certificate',
-              variable: 'DOCKER_CERT_PATH')
-          ]) {
-            print 'DOCKER_CERT_PATH=' + DOCKER_CERT_PATH
-            print 'DOCKER_CERT_PATH.collect { it }=' + DOCKER_CERT_PATH.collect { it }
-            print 'DOCKER_CERT_PATH/ca.pem=' + readFile("$DOCKER_CERT_PATH/ca.pem")
-            print 'DOCKER_CERT_PATH/cert.pem=' + readFile("$DOCKER_CERT_PATH/cert.pem")
-            print 'DOCKER_CERT_PATH/key.pem=' + readFile("$DOCKER_CERT_PATH/key.pem")
-          }
-        }
-      }
-    }
-*/
-    stage('list credentials ids') {
-      steps {
-        script {
-          sh 'cat $JENKINS_HOME/credentials.xml | grep "<id>"'
+          echo 'Credentials are accessable but not visible:'
+          echo 'username = ' + env.server_cred_usr
+          echo 'password = ' + env.server_cred_psw
+
+          //host_ip = "3.124.189.223"
+          //comand = "ls -la"
+          //def sh_script = "sshpass -p " + env.server_cred_psw + " ssh " + env.server_cred_usr + "@" + address + " -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " + command
+          //output = sh(returnStdout: true, script: sh_script)
         }
       }
     }
